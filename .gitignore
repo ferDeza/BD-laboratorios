@@ -1,0 +1,12 @@
+# Ejecutables de Windows
+*.exe
+
+# Archivos objeto (compilación intermedia)
+*.obj
+*.o
+
+# Archivos de base de datos generados por el Pager
+*.db
+
+# Archivos temporales de VS Code
+.vscode/

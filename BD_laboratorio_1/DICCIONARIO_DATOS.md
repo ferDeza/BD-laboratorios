@@ -98,6 +98,46 @@ Implementar una clase `Page` con funcionalidades de lectura/escritura de datos.
 | `writeData()` | Escribe datos en página | `(src, offset, len)` | void |
 | `readData()` | Lee datos de página | `(dest, offset, len)` | void |
 | `getPageId()` | Obtiene ID de página | - | page_id_t |
+| `reset()` | Llena la página con ceros | - | void |
+| `getSize()` | Obtiene tamaño de la página | - | size_t |
+
+### Funciones de I/O Empleadas en Pruebas
+
+| Función/Comando | Descripción | Parámetros | Retorno |
+|---|---|---|---|
+| `std::cout` | Salida estándar a consola | `objeto <<` | ostream |
+| `std::ofstream` | Abre archivo para escritura binaria | `filename, std::ios::binary` | Stream |
+| `file.write()` | Escribe buffer en archivo | `(const char* ptr, size_t count)` | void |
+| `file.close()` | Cierra archivo | - | void |
+| `reinterpret_cast<>` | Conversión de tipo de puntero | `<tipo>(variable)` | tipo convertido |
+| `std::endl` | Salto de línea y flush | - | ostream |
+
+### Tipos de Datos Utilizados
+
+| Tipo | Descripción | Uso |
+|---|---|---|
+| `page_id_t` | typedef para `uint32_t` | Identificador de página |
+| `uint8_t` | Entero sin signo de 8 bits | Almacenamiento de datos binarios |
+| `uint32_t` | Entero sin signo de 32 bits | IDs y números grandes |
+| `size_t` | Tipo para tamaños | Offsets y longitudes |
+| `const char*` | Puntero a cadena de caracteres | Datos de texto |
+| `std::vector<uint8_t>` | Contenedor dinámico de bytes | Almacenamiento de página |
+
+### Flujo de Ejecución - Parte 3
+
+1. **Crear páginas** con IDs (0, 1, 2)
+2. **Escribir datos** en diferentes ubicaciones (offset)
+   - Texto en página 0
+   - Números en página 1
+   - Múltiples escrituras en página 2
+3. **Leer datos** verificando que se almacenaron correctamente
+4. **Reset** - limpiar página rellenando con ceros
+5. **Guardar a archivo** - exportar página a archivo binario
+
+### Constantes de Referencia
+
+- `PAGE_SIZE = 4096` bytes (4 KB)
+- `INVALID_PAGE_ID = 0xFFFFFFFF` (ID inválido por defecto)
 | `getSize()` | Obtiene tamaño de página | - | size_t |
 | `reset()` | Limpia página (llena con 0) | - | void |
 
